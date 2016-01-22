@@ -7,6 +7,6 @@
 
 /target
 *.iml
-.idea
-.project
+/.idea
+/.project
 .setting.xml
