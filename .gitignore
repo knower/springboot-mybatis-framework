@@ -11,3 +11,5 @@
 /.project
 .setting.xml
 /.setting
+*.ipr
+*.iws
