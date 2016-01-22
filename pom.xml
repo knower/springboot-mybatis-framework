@@ -27,7 +27,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!--SpringBoot 项目打成war包，放到tomcat里运行，需除去SpringBoot内嵌的插件-->
+             <!--<exclusions>
+                 <exclusion>
+                     <artifactId>log4j-over-slf4j</artifactId>
+                     <groupId>org.slf4j</groupId>
+                 </exclusion>
+                 <exclusion>
+                     <groupId>org.springframework.boot</groupId>
+                     <artifactId>spring-boot-starter-tomcat</artifactId>
+                 </exclusion>
+             </exclusions>-->
         </dependency>
+
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
 
         <dependency>
             <groupId>junit</groupId>
@@ -44,7 +61,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- 指定生产war名称 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>sbmybatis</warName>
+                </configuration>
+            </plugin>-->
         </plugins>
     </build>
-    
+
 </project>
