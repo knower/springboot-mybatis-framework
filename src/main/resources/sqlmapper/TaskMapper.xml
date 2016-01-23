@@ -5,11 +5,11 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="task_name" property="taskName" jdbcType="VARCHAR"/>
         <result column="created" property="created" jdbcType="BIGINT"/>
-        <collection property="taskItemList" ofType="com.monkeycoding.xyz.entity.TaskItem"
-                    resultMap="com.monkeycoding.xyz.mapper.TaskItemMapper.BaseResultMap">
-           <!-- <id column="id" property="id" jdbcType="INTEGER"/>
+        <collection property="taskItemList" ofType="com.monkeycoding.xyz.entity.TaskItem">
+            <id column="id" property="id" jdbcType="INTEGER"/>
+            <result column="task_id" property="taskId" jdbcType="INTEGER"/>
             <result column="request_url" property="requestUrl" jdbcType="VARCHAR"/>
-            <result column="created" property="created" jdbcType="BIGINT"/>-->
+            <result column="created" property="created" jdbcType="BIGINT"/>
         </collection>
     </resultMap>
 
@@ -49,7 +49,7 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
+            <if test="id != null">3
                 #{id,jdbcType=INTEGER},
             </if>
             <if test="taskName != null">
