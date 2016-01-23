@@ -1,34 +1,48 @@
 package com.monkeycoding.xyz;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import com.monkeycoding.xyz.entity.Task;
+import com.monkeycoding.xyz.entity.TaskItem;
+import com.monkeycoding.xyz.service.TaskServiceImpl;
+import com.monkeycoding.xyz.service.api.ITaskService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest
-        extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest(String testName) {
-        super(testName);
-    }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(AppTest.class);
-    }
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(TaskServiceImpl.class)
+@ContextConfiguration(locations = {"classpath:spring.xml"})
+public class AppTest {
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp() {
-        assertTrue(true);
+    @Autowired
+    ITaskService taskService;
+
+    @Test
+    public void test() {
+        Task task = new Task();
+        task.setTaskName("Hello");
+        task.setCreated(System.currentTimeMillis() / 1000);
+
+        List<TaskItem> list = new ArrayList<TaskItem>();
+
+        TaskItem taskItem = new TaskItem();
+        taskItem.setTask(task);
+        taskItem.setRequestUrl("www.baidu.com");
+        task.setCreated(System.currentTimeMillis() / 1000);
+        list.add(taskItem);
+
+        task.setTaskItemList(list);
+
+        taskService.insertTask(task);
     }
 }

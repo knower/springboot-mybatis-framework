@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <logger name="com.monkeycoding.xyz" level="DEBUG"/>
+
+    <property name="LOG_FILE" value="D:\\git\\springboot-mybatis-framework\\app.log"/>
+
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <springProfile name="staging">
+        <logger name="com.monkeycoding.xyz" level="TRACE"/>
+    </springProfile>
+</configuration>
